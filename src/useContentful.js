@@ -12,14 +12,7 @@ const useContentful = () => {
         content_type: "recipeTitle",
         select: "fields",
       });
-      const sanitizedEntries = entries.items.map((item) => {
-        const recipeImg = item.fields.recipePicture.fields;
-        return {
-          ...item.fields,
-          recipeImg,
-        };
-      });
-      return sanitizedEntries;
+      return entries;
     } catch (error) {
       console.log(`Error fetching recipes: ${error}`);
     }
