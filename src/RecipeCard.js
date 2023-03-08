@@ -15,16 +15,13 @@ const RecipeCard = ({ recipe }) => {
       <p>{recipe.fields.longDescription}</p>
       <h3>Ingredients</h3>
       <ul>
-
         {recipe.ingredient?.map((item) => (
-
           <li>{item}</li>
         ))}
       </ul>
       <h3>Steps</h3>
       <ul>
         {recipe.steps?.map((step) => (
-
           <li>{step}</li>
         ))}
       </ul>
