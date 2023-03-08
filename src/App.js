@@ -15,7 +15,7 @@ const App = () => {
 
   return (
     <div>
-      {recipes.map((recipe, index) => (
+      {recipes?.map((recipe, index) => (
         <RecipeCard key={index} recipe={recipe} />
       ))}
     </div>

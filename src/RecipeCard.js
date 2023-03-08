@@ -6,7 +6,7 @@ const RecipeCard = ({ recipe }) => {
       <img
         src={
           "https:" +
-          recipe.recipeImg.file.url +
+          recipe.recipeImg?.file.url +
           "?fit=thumb&f=top_left&h=200&w=200&r=180"
         }
       />
@@ -15,13 +15,13 @@ const RecipeCard = ({ recipe }) => {
       <p>{recipe.longDescription}</p>
       <h3>Ingredients</h3>
       <ul>
-        {recipe.ingredient.map((item) => (
+        {recipe.ingredient?.map((item) => (
           <li>{item}</li>
         ))}
       </ul>
       <h3>Steps</h3>
       <ul>
-        {recipe.steps.map((step) => (
+        {recipe.steps?.map((step) => (
           <li>{step}</li>
         ))}
       </ul>

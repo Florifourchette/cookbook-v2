@@ -13,7 +13,7 @@ const useContentful = () => {
         select: "fields",
       });
       const sanitizedEntries = entries.items.map((item) => {
-        const recipeImg = item.fields.recipePicture.fields;
+        const recipeImg = item.fields.recipePicture?.fields;
         return {
           ...item.fields,
           recipeImg,
