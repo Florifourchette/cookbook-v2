@@ -7,16 +7,10 @@ const App = () => {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
-    async function loadItems() {
-      const myData = await getRecipes();
-      return myData;
-    }
-    async function loadIAgain() {
-      const myNewData = await loadItems();
-      console.log(myNewData.items);
-      setRecipes(myNewData.items);
-    }
-    loadIAgain();
+    getRecipes().then((response) => {
+      console.log(response);
+      setRecipes(response);
+    });
   }, []);
 
   return (
