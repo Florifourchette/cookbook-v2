@@ -5,6 +5,7 @@ import RecipeCard from "./RecipeCard";
 export default function SearchBar({callback}) {
     const [searchEntry, setSearchEntry] = useState("");
     
+    
     const handleSubmit = (e) => {
         e.preventDefault();
         callback(searchEntry)
