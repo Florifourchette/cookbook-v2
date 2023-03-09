@@ -7,6 +7,7 @@ const App = () => {
   const { getRecipes } = useContentful();
   const [recipes, setRecipes] = useState([]);
   const [searchInput, setSearchInput] = useState("");
+  const [filteredRecipes, setFilteredRecipes] = useState([]);
 
   useEffect(() => {
     getRecipes().then((response) => {
@@ -21,13 +22,16 @@ const App = () => {
     setSearchInput(searchData);
 };
 
+// new
+const handleFilter = (filteredItems) => {
+  const filteredRecipes = recipes.filter((recipe) => filteredItems.includes(recipe.category));
+  setFilteredRecipes(filteredRecipes);
+};
 
   return (
-    
-
     <div>
       <>
-        <SearchBar updateSearch={updateSearch}  recipes={recipes} searchInput={searchInput}/>
+        <SearchBar updateSearch={updateSearch} recipes={filteredRecipes.length > 0 ? filteredRecipes : recipes} searchInput={searchInput} onFilter={handleFilter}/>
       </>
       {recipes?.map((recipe, index) => (
         <RecipeCard key={index} recipe={recipe} />

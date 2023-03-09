@@ -1,16 +1,21 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import RecipeCard from "./RecipeCard";
 
 export default function SearchBar(props) {
     const [searchEntry, setSearchEntry] = useState("");
+    const [filteredItems, setFilteredItems] = useState([]);
     
 
-
-    const filteredItems = props.recipes.filter(recipe => {
-        return recipe.recipeTitle.toLowerCase().includes(props.searchInput.toLowerCase());
-        });
-        console.log(filteredItems);
+    useEffect(() => {
+        const filtered  = props.recipes.filter(recipe => {
+            return recipe.recipeTitle.toLowerCase().includes(props.searchInput.toLowerCase());
+            });
+            console.log(filteredItems);
+            setFilteredItems(filtered);
+    }, [searchEntry])
+    
+    
 
 
     const handleSubmit = (e) => {
@@ -18,10 +23,12 @@ export default function SearchBar(props) {
         const searchData = searchEntry;
         props.updateSearch(searchData);
         setSearchEntry('');
-        
+        props.onFilter(filteredItems); //new
         
         
     };
+
+    
 
   return (
     <>
