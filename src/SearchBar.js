@@ -2,30 +2,12 @@ import React from "react";
 import { useState, useEffect } from "react";
 import RecipeCard from "./RecipeCard";
 
-export default function SearchBar(props) {
+export default function SearchBar({callback}) {
     const [searchEntry, setSearchEntry] = useState("");
-    const [filteredItems, setFilteredItems] = useState([]);
     
-
-    useEffect(() => {
-        const filtered  = props.recipes.filter(recipe => {
-            return recipe.recipeTitle.toLowerCase().includes(props.searchInput.toLowerCase());
-            });
-            console.log(filteredItems);
-            setFilteredItems(filtered);
-    }, [searchEntry])
-    
-    
-
-
     const handleSubmit = (e) => {
         e.preventDefault();
-        const searchData = searchEntry;
-        props.updateSearch(searchData);
-        setSearchEntry('');
-        props.onFilter(filteredItems); //new
-        
-        
+        callback(searchEntry)
     };
 
     

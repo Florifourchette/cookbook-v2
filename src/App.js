@@ -3,11 +3,15 @@ import useContentful from "./useContentful";
 import RecipeCard from "./RecipeCard";
 import SearchBar from "./SearchBar";
 
+
+
+
 const App = () => {
   const { getRecipes } = useContentful();
   const [recipes, setRecipes] = useState([]);
   const [searchInput, setSearchInput] = useState("");
-  const [filteredRecipes, setFilteredRecipes] = useState([]);
+  
+  
 
   useEffect(() => {
     getRecipes().then((response) => {
@@ -16,24 +20,22 @@ const App = () => {
     });
   }, []);
 
-  // update state of search function
-  const updateSearch = (searchData) => {
-    console.log("update function");
-    setSearchInput(searchData);
-};
+  const filteredRecipes = recipes.filter((recipe) =>
+  recipe.recipeTitle.toLowerCase().includes(searchInput.toLowerCase())
+);
 
-// new
-const handleFilter = (filteredItems) => {
-  const filteredRecipes = recipes.filter((recipe) => filteredItems.includes(recipe.category));
-  setFilteredRecipes(filteredRecipes);
-};
+  console.log(filteredRecipes, 'is the filtered recipes');
+
+  useEffect(() => {
+    console.log('search value was changed to', searchInput);
+  }, [searchInput]);
 
   return (
     <div>
       <>
-        <SearchBar updateSearch={updateSearch} recipes={filteredRecipes.length > 0 ? filteredRecipes : recipes} searchInput={searchInput} onFilter={handleFilter}/>
+        <SearchBar  callback={(searchInput) => setSearchInput(searchInput)}/>
       </>
-      {recipes?.map((recipe, index) => (
+      {filteredRecipes?.map((recipe, index) => (
         <RecipeCard key={index} recipe={recipe} />
       ))}
     </div>
