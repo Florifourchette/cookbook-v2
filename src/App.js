@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import useContentful from "./useContentful";
 import RecipeCard from "./RecipeCard";
+import SearchBar from "./SearchBar";
+
 
 const App = () => {
   const { getRecipes } = useContentful();
   const [recipes, setRecipes] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
     getRecipes().then((response) => {
@@ -13,9 +16,16 @@ const App = () => {
     });
   }, []);
 
+  const filteredRecipes = recipes.filter((recipe) =>
+  recipe.recipeTitle.toLowerCase().includes(searchInput.toLowerCase())
+);
+
   return (
     <div>
-      {recipes?.map((recipe, index) => (
+      <>
+        <SearchBar  callback={(searchInput) => setSearchInput(searchInput)}/>
+      </>
+      {filteredRecipes?.map((recipe, index) => (
         <RecipeCard key={index} recipe={recipe} />
       ))}
     </div>
