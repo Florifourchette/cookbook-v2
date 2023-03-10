@@ -19,7 +19,6 @@ const useContentful = () => {
           recipeImg,
         };
       });
-      console.log(sanitizedEntries);
       return sanitizedEntries;
     } catch (error) {
       console.log(`Error fetching recipes: ${error}`);
