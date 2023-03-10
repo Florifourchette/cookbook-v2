@@ -44,9 +44,15 @@ const App = () => {
     console.log(isBoxChecked);
   };
 
-  const filteredRecipes = recipes.filter((recipe) =>
-    recipe.recipeTitle.toLowerCase().includes(searchInput.toLowerCase())
+
+  
+  const filteredRecipes = recipes.filter((recipe) => {
+    return recipe.recipeTitle.toLowerCase().includes(searchInput.toLowerCase())
+  }
+    
   );
+
+
 
   return (
     <div>

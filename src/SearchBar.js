@@ -23,7 +23,6 @@ export default function SearchBar({callback}) {
                 onChange={(e) => setSearchEntry(e.target.value)}
                 type={"text"}
                 placeholder={"What are we cooking today?"}
-                required
             ></input>
             <button>Search</button>
         </form>
