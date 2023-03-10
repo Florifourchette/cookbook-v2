@@ -13,23 +13,43 @@ const App = () => {
       console.log(response);
       setRecipes(response);
     });
-  }, [isBoxChecked]);
+  }, []);
 
+  //Filter to sort out the vegan options//
   const handleClickVegan = (e) => {
     e.preventDefault();
-    setRecipes(recipes.filter((item) => item.vegan === true));
+    //check if the box is checked and filter the recipe - if recipe is vegan or not//
+    if (!isBoxChecked) {
+      setRecipes(recipes.filter((item) => item.vegan === true));
+    } else {
+      //call all the recipes again if box unchecked//
+      getRecipes().then((response) => {
+        console.log(response);
+        setRecipes(response);
+      });
+    }
+    //change the status of the variable "isBoxChecked" to false or true depending on the previous value//
+    setIsBoxChecked((prev) => !prev);
   };
 
   const displayAllresults = (e) => {
+    e.preventDefault();
+    getRecipes().then((response) => {
+      console.log(response);
+      setRecipes(response);
+    });
     setIsBoxChecked(false);
+    console.log(isBoxChecked);
   };
 
   return (
     <div>
-      <Filter handleClickVegan={handleClickVegan} />
-      <button id="resetAll" onClick={displayAllresults}>
-        Reset all filters
-      </button>
+      <Filter
+        handleClickVegan={handleClickVegan}
+        displayAllresults={displayAllresults}
+        isBoxChecked={isBoxChecked}
+      />
+
       {recipes?.map((recipe, index) => (
         <RecipeCard key={index} recipe={recipe} />
       ))}

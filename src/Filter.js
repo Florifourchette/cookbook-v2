@@ -1,7 +1,8 @@
 import React from "react";
 import { MDBCheckbox } from "mdb-react-ui-kit";
 
-const Filter = ({ handleClickVegan }) => {
+const Filter = ({ handleClickVegan, isBoxChecked, displayAllresults }) => {
+  console.log(isBoxChecked);
   return (
     <>
       <MDBCheckbox
@@ -9,8 +10,12 @@ const Filter = ({ handleClickVegan }) => {
         value=""
         id="flexCheckDefault"
         label="Vegan"
+        checked={isBoxChecked}
         onChange={handleClickVegan}
       />
+      <button id="resetAll" onClick={displayAllresults}>
+        Reset all filters
+      </button>
     </>
   );
 };
