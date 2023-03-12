@@ -11,7 +11,7 @@ export default ({ filteredRecipes }) => {
   }
 
   const myRecipe = filteredRecipes.find((aRecipe) => {
-    return aRecipe.recipePicture?.sys.id === id;
+    return aRecipe.recipeUrl === id;
   });
 
   useEffect(() => {
