@@ -19,23 +19,6 @@ const App = () => {
     });
   }, []);
 
-  //Filter to sort out the vegan options//
-  const handleClickVegan = (e) => {
-    e.preventDefault();
-    //check if the box is checked and filter the recipe - if recipe is vegan or not//
-    if (!isBoxChecked) {
-      setRecipes(recipes.filter((item) => item.vegan === true));
-    } else {
-      //call all the recipes again if box unchecked//
-      getRecipes().then((response) => {
-        console.log(response);
-        setRecipes(response);
-      });
-    }
-    //change the status of the variable "isBoxChecked" to false or true depending on the previous value//
-    setIsBoxChecked((prev) => !prev);
-  };
-
   const displayAllresults = (e) => {
     e.preventDefault();
     getRecipes().then((response) => {
@@ -47,7 +30,10 @@ const App = () => {
   };
 
   const filteredRecipes = recipes.filter((recipe) => {
-    return recipe.recipeTitle.toLowerCase().includes(searchInput.toLowerCase());
+    return (
+      recipe.recipeTitle.toLowerCase().includes(searchInput.toLowerCase()) &&
+      (isBoxChecked ? recipe.vegan === true : recipe)
+    );
   });
 
   return (
@@ -64,9 +50,10 @@ const App = () => {
         </NavLink>
       </nav>
       <Filter
-        handleClickVegan={handleClickVegan}
+        callback={(isBoxChecked) => {
+          return setIsBoxChecked(isBoxChecked);
+        }}
         displayAllresults={displayAllresults}
-        isBoxChecked={isBoxChecked}
       />
 
       <>
