@@ -1,18 +1,18 @@
 import React from "react";
-import { MDBCheckbox } from "mdb-react-ui-kit";
+import { useState } from "react";
 
-const Filter = ({ handleClickVegan, isBoxChecked, displayAllresults }) => {
-  console.log(isBoxChecked);
+const Filter = ({ callback, displayAllresults }) => {
+  const [checked, setchecked] = useState(true);
+
+  const handleChange = () => {
+    setchecked(!checked);
+    callback(checked);
+  };
+
   return (
     <>
-      <MDBCheckbox
-        name="flexCheck"
-        value=""
-        id="flexCheckDefault"
-        label="Vegan"
-        checked={isBoxChecked}
-        onChange={handleClickVegan}
-      />
+      <input type="checkbox" value={checked} onChange={handleChange} />
+      Vegan
       <button id="resetAll" onClick={displayAllresults}>
         Reset all filters
       </button>
