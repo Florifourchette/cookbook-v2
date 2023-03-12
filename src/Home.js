@@ -5,7 +5,7 @@ export default ({ filteredRecipes }) => {
   return (
     <div>
       {filteredRecipes?.map((recipe) => (
-        <RecipeCard key={recipe.recipePicture?.sys.id} recipe={recipe} />
+        <RecipeCard key={recipe.recipeUrl} recipe={recipe} />
       ))}
     </div>
   );

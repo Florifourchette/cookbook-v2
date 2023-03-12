@@ -24,7 +24,7 @@ const RecipeCard = ({ recipe }) => {
         </div>
         <p>{recipe.shortDescription}</p>
         <p>{recipe.longDescription}</p>
-        <Link className="link" to={`/recipe/${recipe.recipePicture?.sys.id}`}>
+        <Link className="link" to={`/recipe/${recipe.recipeUrl}`}>
           view more
         </Link>
       </div>
