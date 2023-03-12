@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { NavLink, Routes, Route } from "react-router-dom";
 import useContentful from "./useContentful";
-import RecipeCard from "./RecipeCard";
+import Recipe from "./Recipe";
 import Filter from "./Filter";
 import SearchBar from "./SearchBar";
+import Home from "./Home";
 
 const App = () => {
   const { getRecipes } = useContentful();
@@ -44,18 +46,23 @@ const App = () => {
     console.log(isBoxChecked);
   };
 
-
-  
   const filteredRecipes = recipes.filter((recipe) => {
-    return recipe.recipeTitle.toLowerCase().includes(searchInput.toLowerCase())
-  }
-    
-  );
-
-
+    return recipe.recipeTitle.toLowerCase().includes(searchInput.toLowerCase());
+  });
 
   return (
     <div>
+      <nav>
+        <NavLink
+          className="link"
+          to="/"
+          style={({ isActive }) => {
+            return isActive ? { color: "grey", fontWeight: "bold" } : {};
+          }}
+        >
+          Home
+        </NavLink>
+      </nav>
       <Filter
         handleClickVegan={handleClickVegan}
         displayAllresults={displayAllresults}
@@ -65,9 +72,13 @@ const App = () => {
       <>
         <SearchBar callback={(searchInput) => setSearchInput(searchInput)} />
       </>
-      {filteredRecipes?.map((recipe, index) => (
-        <RecipeCard key={index} recipe={recipe} />
-      ))}
+      <Routes>
+        <Route path="/" element={<Home filteredRecipes={filteredRecipes} />} />
+        <Route
+          path="/recipe/:id"
+          element={<Recipe filteredRecipes={filteredRecipes} />}
+        />
+      </Routes>
     </div>
   );
 };

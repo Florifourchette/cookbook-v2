@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const RecipeCard = ({ recipe }) => {
   const [isActive, setIsActive] = useState(false);
@@ -10,42 +11,37 @@ const RecipeCard = ({ recipe }) => {
 
   if (isActive) {
     return (
-      <div onClick={handleClick}>
-        <img
-          src={
-            "https:" +
-            recipe.recipeImg?.file.url +
-            "?fit=thumb&f=top_left&h=200&w=200&r=180"
-          }
-        />
-        <h2>{recipe.recipeTitle}</h2>
+      <div>
+        <div onClick={handleClick}>
+          <img
+            src={
+              "https:" +
+              recipe.recipeImg?.file.url +
+              "?fit=thumb&f=top_left&h=200&w=200&r=180"
+            }
+          />
+          <h2>{recipe.recipeTitle}</h2>
+        </div>
         <p>{recipe.shortDescription}</p>
         <p>{recipe.longDescription}</p>
-        <h3>Ingredients</h3>
-        <ul>
-          {recipe.ingredient?.map((item) => (
-            <li>{item}</li>
-          ))}
-        </ul>
-        <h3>Steps</h3>
-        <ul>
-          {recipe.steps?.map((step) => (
-            <li>{step}</li>
-          ))}
-        </ul>
+        <Link className="link" to={`/recipe/${recipe.recipePicture?.sys.id}`}>
+          view more
+        </Link>
       </div>
     );
   } else {
     return (
-      <div onClick={handleClick}>
-        <img
-          src={
-            "https:" +
-            recipe.recipeImg?.file.url +
-            "?fit=thumb&f=top_left&h=200&w=200&r=180"
-          }
-        />
-        <h2>{recipe.recipeTitle}</h2>
+      <div>
+        <div onClick={handleClick}>
+          <img
+            src={
+              "https:" +
+              recipe.recipeImg?.file.url +
+              "?fit=thumb&f=top_left&h=200&w=200&r=180"
+            }
+          />
+          <h2>{recipe.recipeTitle}</h2>
+        </div>
         <p>{recipe.shortDescription}</p>
       </div>
     );
