@@ -1,6 +1,6 @@
 import { Navbar, Nav, Form, FormControl } from "react-bootstrap";
 import { NavLink, Link, BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import './styles/NavbarStyles.css';
+import './styles/NavbarStyles.css'
 import logo from './Logo.png';
 
 
