@@ -3,13 +3,40 @@
     padding: 0;
 }
 
+.root{
+    background-color: #EEF8F8;
+}
+
 .container-fluid{
     padding: 0;
     margin: 0;
     width: 100%;
 }
 
-.recipeCards{
-    margin: 1rem;
+.css-1xez8po-MuiPaper-root-MuiCard-root:hover{
+    box-shadow: 10px 10px 2px 1px rgb(250, 192, 97)
+    /* box-shadow: 12px 12px 2px 1px #A5CAE3; */
+}
 
+.css-1xez8po-MuiPaper-root-MuiCard-root{
+    margin: 0.75rem;
+}
+
+.css-1knaqv7-MuiButtonBase-root-MuiButton-root{
+    color:rgb(250, 192, 97);
+}
+
+.topImg{
+width: 100%; 
+height: auto;
+
+}
+
+.homeBox{
+    text-align: center;
+    margin: 1.5rem 0 1.5rem 0;
+    padding: 0.5rem;
+}
+h1{
+    text-decoration: underline rgb(250, 192, 97) 8px;
 }

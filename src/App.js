@@ -5,12 +5,9 @@ import Recipe from "./Recipe";
 import Filter from "./Filter";
 import Home from "./Home";
 import NavigationBar from "./Navbar";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import Contact from "./Contact";
 import About from "./About";
-
-
-
 
 const App = () => {
   const { getRecipes } = useContentful();
@@ -47,7 +44,7 @@ const App = () => {
   });
 
   return (
-    <div>
+    <div className="root">
       <NavigationBar callback={handleSearchInput} />
       <Filter
         callback={(isBoxChecked) => {
