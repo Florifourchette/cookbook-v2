@@ -37,7 +37,7 @@ const App = () => {
   });
 
   return (
-    <div>
+    <div className="root">
       <nav>
         <NavLink
           className="link"

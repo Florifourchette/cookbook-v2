@@ -17,11 +17,15 @@ const RecipeCard = ({ recipe }) => {
 
   if (isActive) {
     return (
-      <Card sx={{ maxWidth: 345, margin: "0.5rem" }} onClick={handleClick}>
+      <Card
+        sx={{ maxWidth: 300 }}
+        onClick={handleClick}
+        className="recipeCards"
+      >
         <CardActionArea>
           <CardMedia
             component="img"
-            height="350"
+            height="300"
             image={"https:" + recipe.recipeImg?.file.url}
             alt="green iguana"
           />
@@ -39,7 +43,12 @@ const RecipeCard = ({ recipe }) => {
         </CardActionArea>
         <CardActions>
           <Link className="link" to={`/recipe/${recipe.recipeUrl}`}>
-            <Button size="small" color="primary">
+            <Button
+              size="small"
+              sx={{
+                color: "rgb(250, 192, 97)",
+              }}
+            >
               view more
             </Button>
           </Link>
@@ -48,11 +57,15 @@ const RecipeCard = ({ recipe }) => {
     );
   } else {
     return (
-      <Card sx={{ maxWidth: 345, margin: "0.5rem" }} onClick={handleClick}>
+      <Card
+        sx={{ maxWidth: 300 }}
+        onClick={handleClick}
+        className="recipeCards"
+      >
         <CardActionArea>
           <CardMedia
             component="img"
-            height="350"
+            height="300"
             image={"https:" + recipe.recipeImg?.file.url}
             alt="green iguana"
           />
