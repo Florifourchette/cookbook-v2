@@ -7,15 +7,12 @@ export default ({ filteredRecipes }) => {
   const filterOptions = createFilterOptions({
     matchFrom: "start",
     stringify: filteredRecipes.map((recipe) => {
-      // recipe?.categories.map(())
-      console.log(recipe);
+      recipe?.categories?.map((category) => {
+        console.log(category.fields?.name);
+        return category?.fields?.name;
+      });
     }),
   });
-
-  interface RecipeOptions {
-    title: string;
-    year: number;
-  }
 
   return (
     <div className="container-fluid">
@@ -35,7 +32,11 @@ export default ({ filteredRecipes }) => {
       <Autocomplete
         id="filter-demo"
         options={filteredRecipes}
-        getOptionLabel={(recipe) => recipe?.categories[0]?.fields?.name}
+        getOptionLabel={(recipe) => {
+          recipe?.categories?.map((category) => {
+            return category?.fields?.name;
+          });
+        }}
         filterOptions={filterOptions}
         sx={{ width: 300 }}
         renderInput={(params) => (
