@@ -3,8 +3,11 @@ import { NavLink, Routes, Route } from "react-router-dom";
 import useContentful from "./useContentful";
 import Recipe from "./Recipe";
 import Filter from "./Filter";
-import SearchBar from "./SearchBar";
 import Home from "./Home";
+import NavigationBar from "./Navbar";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Contact from "./Contact";
+import About from "./About";
 
 const App = () => {
   const { getRecipes } = useContentful();
@@ -18,6 +21,10 @@ const App = () => {
       setRecipes(response);
     });
   }, []);
+
+  const handleSearchInput = (input) => {
+    setSearchInput(input);
+  };
 
   const displayAllresults = (e) => {
     e.preventDefault();
@@ -37,30 +44,18 @@ const App = () => {
   });
 
   return (
-    <div>
-      <nav>
-        <NavLink
-          className="link"
-          to="/"
-          style={({ isActive }) => {
-            return isActive ? { color: "grey", fontWeight: "bold" } : {};
-          }}
-        >
-          Home
-        </NavLink>
-      </nav>
+    <div className="root">
+      <NavigationBar callback={handleSearchInput} />
       <Filter
         callback={(isBoxChecked) => {
           return setIsBoxChecked(isBoxChecked);
         }}
         displayAllresults={displayAllresults}
       />
-
-      <>
-        <SearchBar callback={(searchInput) => setSearchInput(searchInput)} />
-      </>
       <Routes>
         <Route path="/" element={<Home filteredRecipes={filteredRecipes} />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/About" element={<About />} />
         <Route
           path="/recipe/:id"
           element={<Recipe filteredRecipes={filteredRecipes} />}

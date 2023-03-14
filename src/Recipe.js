@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import "./style.css";
 
 export default ({ filteredRecipes }) => {
   const [thisRecipe, setThisRecipe] = useState([]);

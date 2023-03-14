@@ -3,10 +3,27 @@ import RecipeCard from "./RecipeCard";
 
 export default ({ filteredRecipes }) => {
   return (
-    <div>
-      {filteredRecipes?.map((recipe) => (
-        <RecipeCard key={recipe.recipeUrl} recipe={recipe} />
-      ))}
+    <div className="container-fluid">
+      <div className="row d-flex flex-column flex-wrap align-items-center">
+        <div className="col-sm-12 col-md-12 col-lg-10 col-xl-9 d-flex justify-content-center flex-wrap">
+          <img className="topImg" src="./lasagne.webp" />
+          <div className="homeBox">
+            <h1>Welcome</h1>
+            <p>
+              We are a trusted resource for home cooks with more than 3,000
+              tested recipes, guides, and meal plans, drawing over 15 million
+              readers each month from around the world.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="row d-flex justify-content-center">
+        <div className="col-sm-12 col-md-12 col-lg-10 col-xl-10 d-flex justify-content-center flex-wrap">
+          {filteredRecipes?.map((recipe) => (
+            <RecipeCard key={recipe.recipeUrl} recipe={recipe} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

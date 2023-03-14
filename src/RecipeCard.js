@@ -1,5 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import "./style.css";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import { Button, CardActionArea, CardActions } from "@mui/material";
 
 const RecipeCard = ({ recipe }) => {
   const [isActive, setIsActive] = useState(false);
@@ -11,40 +17,68 @@ const RecipeCard = ({ recipe }) => {
 
   if (isActive) {
     return (
-      <div>
-        <div onClick={handleClick}>
-          <img
-            src={
-              "https:" +
-              recipe.recipeImg?.file.url +
-              "?fit=thumb&f=top_left&h=200&w=200&r=180"
-            }
-            alt={recipe.recipeTitle}
+      <Card
+        sx={{ maxWidth: 300 }}
+        onClick={handleClick}
+        className="recipeCards"
+      >
+        <CardActionArea>
+          <CardMedia
+            component="img"
+            height="300"
+            image={"https:" + recipe.recipeImg?.file.url}
+            alt="green iguana"
           />
-          <h2>{recipe.recipeTitle}</h2>
-        </div>
-        <p>{recipe.shortDescription}</p>
-        <p>{recipe.longDescription}</p>
-        <Link className="link" to={`/recipe/${recipe.recipeUrl}`}>
-          view more
-        </Link>
-      </div>
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="div">
+              {recipe.recipeTitle}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {recipe.shortDescription}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {recipe.longDescription}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+        <CardActions>
+          <Link className="link" to={`/recipe/${recipe.recipeUrl}`}>
+            <Button
+              size="small"
+              sx={{
+                color: "rgb(250, 192, 97)",
+              }}
+            >
+              view more
+            </Button>
+          </Link>
+        </CardActions>
+      </Card>
     );
   } else {
     return (
-      <div>
-        <div onClick={handleClick}>
-          <img
-            src={
-              "https:" +
-              recipe.recipeImg?.file.url +
-              "?fit=thumb&f=top_left&h=200&w=200&r=180"
-            }
+      <Card
+        sx={{ maxWidth: 300 }}
+        onClick={handleClick}
+        className="recipeCards"
+      >
+        <CardActionArea>
+          <CardMedia
+            component="img"
+            height="300"
+            image={"https:" + recipe.recipeImg?.file.url}
+            alt="green iguana"
           />
-          <h2>{recipe.recipeTitle}</h2>
-        </div>
-        <p>{recipe.shortDescription}</p>
-      </div>
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="div">
+              {recipe.recipeTitle}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {recipe.shortDescription}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+      </Card>
     );
   }
 };
