@@ -1,6 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import RecipeCard from "./RecipeCard";
+import { useState } from "react";
 
 export default function SearchBar({ callback }) {
   const [searchEntry, setSearchEntry] = useState("");

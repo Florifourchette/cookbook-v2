@@ -2,8 +2,8 @@ import { createClient } from "contentful";
 
 const useContentful = () => {
   const client = createClient({
-    space: "8sp5hqkneneh",
-    accessToken: "3ne6cvWMB5xiFG6QbzVqd7IzgNbqvAObxg3Co6pP7XE",
+    space: process.env.REACT_APP_CONTENTFULT_SPACE,
+    accessToken: process.env.REACT_APP_CONTENTFUL_TOKEN,
     host: "preview.contentful.com",
   });
   const getRecipes = async () => {

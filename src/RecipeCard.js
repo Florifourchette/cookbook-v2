@@ -19,6 +19,7 @@ const RecipeCard = ({ recipe }) => {
               recipe.recipeImg?.file.url +
               "?fit=thumb&f=top_left&h=200&w=200&r=180"
             }
+            alt={recipe.recipeTitle}
           />
           <h2>{recipe.recipeTitle}</h2>
         </div>
