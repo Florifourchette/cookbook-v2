@@ -1,7 +1,22 @@
 import React from "react";
 import RecipeCard from "./RecipeCard";
+import TextField from "@mui/material/TextField";
+import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
 
 export default ({ filteredRecipes }) => {
+  const filterOptions = createFilterOptions({
+    matchFrom: "start",
+    stringify: filteredRecipes.map((recipe) => {
+      // recipe?.categories.map(())
+      console.log(recipe);
+    }),
+  });
+
+  interface RecipeOptions {
+    title: string;
+    year: number;
+  }
+
   return (
     <div className="container-fluid">
       <div className="row d-flex flex-column flex-wrap align-items-center">
@@ -17,6 +32,16 @@ export default ({ filteredRecipes }) => {
           </div>
         </div>
       </div>
+      <Autocomplete
+        id="filter-demo"
+        options={filteredRecipes}
+        getOptionLabel={(recipe) => recipe?.categories[0]?.fields?.name}
+        filterOptions={filterOptions}
+        sx={{ width: 300 }}
+        renderInput={(params) => (
+          <TextField {...params} label="Custom filter" />
+        )}
+      />
       <div className="row d-flex justify-content-center">
         <div className="col-sm-12 col-md-12 col-lg-10 col-xl-10 d-flex justify-content-center flex-wrap">
           {filteredRecipes?.map((recipe) => (

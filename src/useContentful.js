@@ -12,6 +12,7 @@ const useContentful = () => {
         content_type: "recipeTitle",
         select: "fields",
       });
+      console.log(entries);
       const sanitizedEntries = entries.items.map((item) => {
         const recipeImg = item.fields.recipePicture?.fields;
         return {
