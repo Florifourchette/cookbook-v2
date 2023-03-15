@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import RecipeCard from "./RecipeCard";
 import TextField from "@mui/material/TextField";
 import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
 
-export default ({ filteredRecipes, categories }) => {
+export default ({ filteredRecipes, categories, categoryID, setCategoryID }) => {
   const filterOptions = createFilterOptions({
     matchFrom: "start",
   });
+
+  console.log(categoryID?.sys.id);
 
   return (
     <div className="container-fluid">
@@ -25,6 +27,8 @@ export default ({ filteredRecipes, categories }) => {
       </div>
       <Autocomplete
         id="filter-demo"
+        value={categoryID}
+        onChange={(e, newValue) => setCategoryID(newValue)}
         options={categories}
         getOptionLabel={(category) => category?.fields?.name}
         filterOptions={filterOptions}

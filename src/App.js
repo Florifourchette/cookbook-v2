@@ -16,13 +16,14 @@ const App = () => {
   const [isBoxChecked, setIsBoxChecked] = useState(false);
   const [searchInput, setSearchInput] = useState("");
   const [categories, setCategories] = useState([]);
+  const [categoryID, setCategoryID] = useState(null);
 
   useEffect(() => {
-    getRecipes().then((response) => {
+    getRecipes(categoryID).then((response) => {
       console.log(response);
       setRecipes(response);
     });
-  }, []);
+  }, [categoryID]);
 
   useEffect(() => {
     getCategories().then((response) => {
@@ -65,7 +66,12 @@ const App = () => {
         <Route
           path="/"
           element={
-            <Home filteredRecipes={filteredRecipes} categories={categories} />
+            <Home
+              filteredRecipes={filteredRecipes}
+              categories={categories}
+              categoryID={categoryID}
+              setCategoryID={setCategoryID}
+            />
           }
         />
         <Route path="/contact" element={<Contact />} />
