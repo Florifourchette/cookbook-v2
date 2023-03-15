@@ -42,11 +42,20 @@ const RecipeCard = ({ recipe }) => {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Link className="link" to={`/recipe/${recipe.recipeUrl}`}>
+          <Link
+            className="link"
+            to={`/recipe/${recipe.recipeUrl}`}
+            style={{ textDecoration: "none" }}
+          >
             <Button
               size="small"
               sx={{
-                color: "rgb(250, 192, 97)",
+                color: "white",
+                fontSize: "bold",
+                backgroundColor: "#fac061",
+                "&:hover": {
+                  backgroundColor: "#a5cae3",
+                },
               }}
             >
               view more
