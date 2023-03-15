@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import RecipeCard from "./RecipeCard";
+import TextField from "@mui/material/TextField";
+import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
 
-export default ({ filteredRecipes }) => {
+export default ({ filteredRecipes, categories, categoryID, setCategoryID }) => {
+  const filterOptions = createFilterOptions({
+    matchFrom: "start",
+  });
+
+  console.log(categoryID?.sys.id);
+
   return (
     <div className="container-fluid">
       <div className="row d-flex flex-column flex-wrap align-items-center">
@@ -17,6 +25,18 @@ export default ({ filteredRecipes }) => {
           </div>
         </div>
       </div>
+      <Autocomplete
+        id="filter-demo"
+        value={categoryID}
+        onChange={(e, newValue) => setCategoryID(newValue)}
+        options={categories}
+        getOptionLabel={(category) => category?.fields?.name}
+        filterOptions={filterOptions}
+        sx={{ width: 300 }}
+        renderInput={(params) => (
+          <TextField {...params} label="Recipe Category" />
+        )}
+      />
       <div className="row d-flex justify-content-center">
         <div className="col-sm-12 col-md-12 col-lg-10 col-xl-10 d-flex justify-content-center flex-wrap">
           {filteredRecipes?.map((recipe) => (

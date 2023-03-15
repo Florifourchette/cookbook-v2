@@ -6,12 +6,14 @@ const useContentful = () => {
     accessToken: process.env.REACT_APP_CONTENTFUL_TOKEN,
     host: "preview.contentful.com",
   });
-  const getRecipes = async () => {
+  const getRecipes = async (categoryID) => {
     try {
       const entries = await client.getEntries({
         content_type: "recipeTitle",
         select: "fields",
+        "fields.categories.sys.id": categoryID?.sys.id,
       });
+      console.log(entries);
       const sanitizedEntries = entries.items.map((item) => {
         const recipeImg = item.fields.recipePicture?.fields;
         return {
@@ -24,6 +26,18 @@ const useContentful = () => {
       console.log(`Error fetching recipes: ${error}`);
     }
   };
-  return { getRecipes };
+
+  const getCategories = async () => {
+    try {
+      const categories = await client.getEntries({
+        content_type: "categories",
+        select: "fields",
+      });
+      return categories.items;
+    } catch (error) {
+      console.log(`Error fetching recipes: ${error}`);
+    }
+  };
+  return { getRecipes, getCategories };
 };
 export default useContentful;
