@@ -25,6 +25,18 @@ const useContentful = () => {
       console.log(`Error fetching recipes: ${error}`);
     }
   };
-  return { getRecipes };
+
+  const getCategories = async () => {
+    try {
+      const categories = await client.getEntries({
+        content_type: "categories",
+        select: "fields",
+      });
+      return categories.items;
+    } catch (error) {
+      console.log(`Error fetching recipes: ${error}`);
+    }
+  };
+  return { getRecipes, getCategories };
 };
 export default useContentful;

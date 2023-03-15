@@ -11,14 +11,23 @@ import About from "./About";
 
 const App = () => {
   const { getRecipes } = useContentful();
+  const { getCategories } = useContentful();
   const [recipes, setRecipes] = useState([]);
   const [isBoxChecked, setIsBoxChecked] = useState(false);
   const [searchInput, setSearchInput] = useState("");
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     getRecipes().then((response) => {
       console.log(response);
       setRecipes(response);
+    });
+  }, []);
+
+  useEffect(() => {
+    getCategories().then((response) => {
+      setCategories(response);
+      console.log(response);
     });
   }, []);
 
@@ -53,7 +62,12 @@ const App = () => {
         displayAllresults={displayAllresults}
       />
       <Routes>
-        <Route path="/" element={<Home filteredRecipes={filteredRecipes} />} />
+        <Route
+          path="/"
+          element={
+            <Home filteredRecipes={filteredRecipes} categories={categories} />
+          }
+        />
         <Route path="/contact" element={<Contact />} />
         <Route path="/About" element={<About />} />
         <Route
