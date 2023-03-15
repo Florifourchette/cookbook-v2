@@ -1,0 +1,19 @@
+.footer{
+    background-color: #A5CAE3;
+    margin-top: 3em;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+}
+
+.footer-logo{
+    height: 6em;
+    width: 6em;
+    padding: 0;
+    margin-left: 2em;
+    margin-bottom: 0;
+}
+
+.store-icon{
+    height: 2em;
+    width: 5em;
+    margin-inline-end: 3em;
+}

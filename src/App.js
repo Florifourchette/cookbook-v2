@@ -7,6 +7,7 @@ import NavigationBar from "./Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Contact from "./Contact";
 import About from "./About";
+import Footer from "./Footer";
 
 const App = () => {
   const { getRecipes } = useContentful();
@@ -82,6 +83,7 @@ const App = () => {
           element={<Recipe filteredRecipes={filteredRecipes} />}
         />
       </Routes>
+      <Footer />
     </div>
   );
 };
