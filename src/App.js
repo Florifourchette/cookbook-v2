@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { NavLink, Routes, Route } from "react-router-dom";
 import useContentful from "./useContentful";
 import Recipe from "./Recipe";
-import Filter from "./Filter";
 import Home from "./Home";
 import NavigationBar from "./Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -13,10 +12,10 @@ const App = () => {
   const { getRecipes } = useContentful();
   const { getCategories } = useContentful();
   const [recipes, setRecipes] = useState([]);
-  const [isBoxChecked, setIsBoxChecked] = useState(false);
   const [searchInput, setSearchInput] = useState("");
   const [categories, setCategories] = useState([]);
   const [categoryID, setCategoryID] = useState(null);
+  const [checked, setchecked] = useState(false);
 
   useEffect(() => {
     getRecipes(categoryID).then((response) => {
@@ -37,31 +36,28 @@ const App = () => {
   };
 
   const displayAllresults = (e) => {
-    e.preventDefault();
-    getRecipes().then((response) => {
-      console.log(response);
-      setRecipes(response);
-    });
-    setIsBoxChecked(false);
-    console.log(isBoxChecked);
+    // e.preventDefault();
+    // getRecipes().then((response) => {
+    //   console.log(response);
+    //   setRecipes(response);
+    //   setCategoryID(null);
+    //   setchecked(false);
+    // });
+    window.location.reload();
   };
+
+  console.log(checked);
 
   const filteredRecipes = recipes.filter((recipe) => {
     return (
       recipe.recipeTitle.toLowerCase().includes(searchInput.toLowerCase()) &&
-      (isBoxChecked ? recipe.vegan === true : recipe)
+      (checked ? recipe.vegan === true : recipe)
     );
   });
 
   return (
     <div className="root">
       <NavigationBar callback={handleSearchInput} />
-      <Filter
-        callback={(isBoxChecked) => {
-          return setIsBoxChecked(isBoxChecked);
-        }}
-        displayAllresults={displayAllresults}
-      />
       <Routes>
         <Route
           path="/"
@@ -71,6 +67,11 @@ const App = () => {
               categories={categories}
               categoryID={categoryID}
               setCategoryID={setCategoryID}
+              displayAllresults={displayAllresults}
+              recipes={recipes}
+              setRecipes={setRecipes}
+              setchecked={setchecked}
+              checked={checked}
             />
           }
         />

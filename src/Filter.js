@@ -1,21 +1,22 @@
 import React from "react";
-import { useState } from "react";
+import { useRef } from "react";
 
-const Filter = ({ callback, displayAllresults }) => {
-  const [checked, setchecked] = useState(true);
-
+const Filter = ({ checked, setchecked }) => {
   const handleChange = () => {
     setchecked(!checked);
-    callback(checked);
   };
 
   return (
     <>
-      <input type="checkbox" value={checked} onChange={handleChange} />
-      Vegan
-      <button id="resetAll" onClick={displayAllresults}>
-        Reset all filters
-      </button>
+      <div className="checkbox-wrapper-2 d-flex">
+        <input
+          className="sc-gJwTLC ikxBAC"
+          type="checkbox"
+          value={checked}
+          onChange={handleChange}
+        />
+        <p>Vegan</p>
+      </div>
     </>
   );
 };
