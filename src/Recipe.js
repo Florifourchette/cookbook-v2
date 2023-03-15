@@ -32,36 +32,30 @@ export default ({ filteredRecipes }) => {
   return (
     <div>
       <CssBaseline />
+      <button onClick={handleClick} id="back">
+        Back to Homepage
+      </button>
       <main>
         <div>
+          <Container align="center" sx={{ mb: 3 }}>
+            <img
+              src={
+                "https:" +
+                thisRecipe.recipeImg?.file.url +
+                "?fit=thumb&f=top_left&h=400&w=800&r=200"
+              }
+            />
+          </Container>
           <Container maxWidth="sm" align="center">
-            <Grid
-              container
-              alignContent="flex-start"
-              alignItems="flex-start"
-              justify="flex-start"
+            <Typography
+              gutterBottom
+              variant="h1"
+              component="div"
+              color="textPrimary"
+              align="center"
             >
-              <Grid item>
-                <img
-                  src={
-                    "https:" +
-                    thisRecipe.recipeImg?.file.url +
-                    "?fit=thumb&f=top_left&h=400&w=800&r=200"
-                  }
-                />
-              </Grid>
-              <Grid item>
-                <Typography
-                  gutterBottom
-                  variant="h1"
-                  component="div"
-                  color="textPrimary"
-                  align="center"
-                >
-                  <h1>{thisRecipe.recipeTitle}</h1>
-                </Typography>
-              </Grid>
-            </Grid>
+              <h1>{thisRecipe.recipeTitle}</h1>
+            </Typography>
           </Container>
           <Container maxWidth="sm" align="center">
             <Typography
@@ -70,6 +64,7 @@ export default ({ filteredRecipes }) => {
               component="div"
               color="textSecondary"
               align="center"
+              sx={{ mb: 4 }}
             >
               <p>{thisRecipe.shortDescription}</p>
               <p>{thisRecipe.longDescription}</p>
@@ -141,8 +136,6 @@ export default ({ filteredRecipes }) => {
           </Container>
         </div>
       </main>
-
-      <button onClick={handleClick}>back</button>
     </div>
   );
 };
