@@ -7,6 +7,7 @@ import Container from "@mui/material/Container";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { Button, CardActionArea, CardActions } from "@mui/material";
+import { borderRadius } from "@mui/system";
 
 export default ({ filteredRecipes }) => {
   const [thisRecipe, setThisRecipe] = useState([]);
@@ -37,15 +38,24 @@ export default ({ filteredRecipes }) => {
       </button>
       <main>
         <div>
-          <Container align="center" sx={{ mb: 3 }}>
-            <img
-              src={
+          <Container
+            id="recipePageImageBox"
+            align="center"
+            sx={{ mb: 3 }}
+            maxWidth="sm"
+            style={{
+              backgroundImage: `url(${
                 "https:" +
                 thisRecipe.recipeImg?.file.url +
-                "?fit=thumb&f=top_left&h=400&w=800&r=200"
-              }
-            />
-          </Container>
+                "?fit=thumb&f=top_left"
+              })`,
+              backgroundSize: "cover",
+              height: "70vh",
+              width: "70vh",
+              color: "#f5f5f5",
+              borderRadius: "35%",
+            }}
+          ></Container>
           <Container maxWidth="sm" align="center">
             <Typography
               gutterBottom

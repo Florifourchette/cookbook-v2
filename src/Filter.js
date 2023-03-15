@@ -8,14 +8,14 @@ const Filter = ({ checked, setchecked }) => {
 
   return (
     <>
-      <div className="checkbox-wrapper-2 d-flex">
+      <div id="veganSwitch" className="checkbox-wrapper-2 d-flex">
         <input
           className="sc-gJwTLC ikxBAC"
           type="checkbox"
           value={checked}
           onChange={handleChange}
         />
-        <p>Vegan</p>
+        <p id="VeganParagraph">Vegan</p>
       </div>
     </>
   );
