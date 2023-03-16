@@ -19,11 +19,11 @@ const App = () => {
   const [checked, setchecked] = useState(false);
 
   useEffect(() => {
-    getRecipes(categoryID).then((response) => {
+    getRecipes(categoryID, searchInput).then((response) => {
       console.log(response);
       setRecipes(response);
     });
-  }, [categoryID]);
+  }, [categoryID ,searchInput]);
 
   useEffect(() => {
     getCategories().then((response) => {

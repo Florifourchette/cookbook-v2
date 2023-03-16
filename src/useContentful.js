@@ -6,12 +6,14 @@ const useContentful = () => {
     accessToken: process.env.REACT_APP_CONTENTFUL_TOKEN,
     host: "preview.contentful.com",
   });
-  const getRecipes = async (categoryID) => {
+  const getRecipes = async (categoryID, searchInput) => {
     try {
       const entries = await client.getEntries({
         content_type: "recipeTitle",
         select: "fields",
         "fields.categories.sys.id": categoryID?.sys.id,
+        query: searchInput,
+        "fields.recipeTitle[match]": searchInput,
       });
       console.log(entries);
       const sanitizedEntries = entries.items.map((item) => {
