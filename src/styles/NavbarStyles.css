@@ -1,0 +1,39 @@
+.Navbar{
+    background-color: #A5CAE3;
+    padding: 0;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+}
+.search-bar{
+    margin-inline: 2em;
+    margin-top: 0.5em;
+    margin-left: 4em;
+    max-width: 35em;
+    padding: 0;
+}
+
+.Nav-link{
+    color: #0C2D48;
+    font-weight: 600;
+    margin-inline: 3em;
+    margin-top: 0.5em;
+    text-decoration: none;
+    margin-left: 8em;
+    cursor: pointer;
+    
+}
+
+nav a.active{
+    color: grey;
+}
+nav a:hover{
+    color: #529add;
+}
+
+.logo{
+    height: 2.5em;
+    width: 3em;
+    padding: 0;
+    margin-left: 2em;
+    margin-bottom: 0;
+}
+
