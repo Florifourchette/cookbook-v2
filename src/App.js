@@ -8,6 +8,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Contact from "./Contact";
 import About from "./About";
 import Footer from "./Footer";
+import Signup from "./Signup";
+import { Container } from 'react-bootstrap'
+import { AuthProvider } from "./contexts/AuthContext";
+
+
+
+
 
 const App = () => {
   const { getRecipes } = useContentful();
@@ -53,6 +60,15 @@ const App = () => {
 
   return (
     <div className="root">
+      <AuthProvider>
+        <Container className="d-flex align-items-center justify-content-center" id="container">
+          <div className="w-100 sign-up">
+            <Signup />
+          </div>
+          
+        </Container>
+      </AuthProvider>
+      
       <NavigationBar callback={handleSearchInput} />
       <Routes>
         <Route
