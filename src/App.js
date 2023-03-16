@@ -9,6 +9,8 @@ import Contact from "./Contact";
 import About from "./About";
 import Footer from "./Footer";
 
+
+
 const App = () => {
   const { getRecipes } = useContentful();
   const { getCategories } = useContentful();
@@ -16,14 +18,14 @@ const App = () => {
   const [searchInput, setSearchInput] = useState("");
   const [categories, setCategories] = useState([]);
   const [categoryID, setCategoryID] = useState(null);
-  const [checked, setchecked] = useState(false);
+  const [checked, setchecked] = useState(null);
 
   useEffect(() => {
     getRecipes(categoryID, searchInput).then((response) => {
       console.log(response);
       setRecipes(response);
     });
-  }, [categoryID ,searchInput]);
+  }, [categoryID ,searchInput,]);
 
   useEffect(() => {
     getCategories().then((response) => {
@@ -37,14 +39,10 @@ const App = () => {
   };
 
   const displayAllresults = (e) => {
-    // e.preventDefault();
-    // getRecipes().then((response) => {
-    //   console.log(response);
-    //   setRecipes(response);
-    //   setCategoryID(null);
-    //   setchecked(false);
-    // });
-    window.location.reload();
+    e.preventDefault();
+    setCategoryID(null)
+    setchecked(null)
+    setSearchInput('')
   };
 
   console.log(checked);
@@ -80,7 +78,7 @@ const App = () => {
         <Route path="/About" element={<About />} />
         <Route
           path="/recipe/:id"
-          element={<Recipe filteredRecipes={filteredRecipes} />}
+          element={<Recipe recipes={recipes} />}
         />
       </Routes>
       <Footer />

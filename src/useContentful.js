@@ -14,6 +14,7 @@ const useContentful = () => {
         "fields.categories.sys.id": categoryID?.sys.id,
         query: searchInput,
         "fields.recipeTitle[match]": searchInput,
+        
       });
       console.log(entries);
       const sanitizedEntries = entries.items.map((item) => {
