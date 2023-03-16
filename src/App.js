@@ -30,7 +30,6 @@ const App = () => {
   useEffect(() => {
     getCategories().then((response) => {
       setCategories(response);
-      console.log(response);
     });
   }, []);
 
@@ -44,8 +43,6 @@ const App = () => {
     setchecked(null)
     setSearchInput('')
   };
-
-  console.log(checked);
 
   const filteredRecipes = recipes.filter((recipe) => {
     return (
