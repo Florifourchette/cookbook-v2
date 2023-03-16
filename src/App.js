@@ -20,7 +20,6 @@ const App = () => {
 
   useEffect(() => {
     getRecipes(categoryID).then((response) => {
-      console.log(response);
       setRecipes(response);
     });
   }, [categoryID]);
@@ -28,7 +27,6 @@ const App = () => {
   useEffect(() => {
     getCategories().then((response) => {
       setCategories(response);
-      console.log(response);
     });
   }, []);
 
@@ -37,17 +35,14 @@ const App = () => {
   };
 
   const displayAllresults = (e) => {
-    // e.preventDefault();
-    // getRecipes().then((response) => {
-    //   console.log(response);
-    //   setRecipes(response);
-    //   setCategoryID(null);
-    //   setchecked(false);
-    // });
-    window.location.reload();
+    e.preventDefault();
+    getRecipes().then((response) => {
+      setRecipes(response);
+      setCategoryID(null);
+      setchecked(false);
+    });
+    // window.location.reload();
   };
-
-  console.log(checked);
 
   const filteredRecipes = recipes.filter((recipe) => {
     return (

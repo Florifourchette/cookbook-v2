@@ -13,7 +13,6 @@ const useContentful = () => {
         select: "fields",
         "fields.categories.sys.id": categoryID?.sys.id,
       });
-      console.log(entries);
       const sanitizedEntries = entries.items.map((item) => {
         const recipeImg = item.fields.recipePicture?.fields;
         return {
