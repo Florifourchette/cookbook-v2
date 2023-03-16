@@ -2,6 +2,7 @@ import React from "react";
 import { useRef } from "react";
 
 const Filter = ({ checked, setchecked }) => {
+  console.log(checked);
   const handleChange = () => {
     setchecked(!checked);
   };
@@ -14,6 +15,7 @@ const Filter = ({ checked, setchecked }) => {
           type="checkbox"
           value={checked}
           onChange={handleChange}
+          checked={checked}
         />
         <p id="VeganParagraph">Vegan</p>
       </div>
