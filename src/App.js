@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, Routes, Route } from "react-router-dom";
+import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 import useContentful from "./useContentful";
 import Recipe from "./Recipe";
 import Home from "./Home";
@@ -60,17 +60,11 @@ const App = () => {
 
   return (
     <div className="root">
-      <AuthProvider>
-        <Container className="d-flex align-items-center justify-content-center" id="container">
-          <div className="w-100 sign-up">
-            <Signup />
-          </div>
-          
-        </Container>
-      </AuthProvider>
-      
+
       <NavigationBar callback={handleSearchInput} />
       <Routes>
+        <Route path="/signup" element={<Signup />} />
+        
         <Route
           path="/"
           element={

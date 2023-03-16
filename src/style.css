@@ -181,5 +181,9 @@ h1 {
   min-height: '100vh';
 }
 .sign-up{
-  max-width: 400px;
+  max-width: 40em;
+  text-align: center;
+  align-self: center;
+  margin-inline: 30%;
+  margin-top: 3em;
 }
