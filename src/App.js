@@ -92,7 +92,7 @@ const App = () => {
 
         <Route
           exact
-          path="cookbook-v2/"
+          path="/"
           element={
             <ProtectedRoute>
               <Home
