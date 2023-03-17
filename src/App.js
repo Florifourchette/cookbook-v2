@@ -26,13 +26,15 @@ const App = () => {
   const titleRef = useRef("");
   const shortTextRef = useRef("");
   const longTextRef = useRef("");
+  const [uploading, setUploading] = useState(false);
 
   useEffect(() => {
     getRecipes(categoryID, searchInput).then((response) => {
       console.log(response);
       setRecipes(response);
+      console.log("renders?");
     });
-  }, [categoryID, searchInput]);
+  }, [categoryID, searchInput, uploading]);
 
   useEffect(() => {
     getCategories().then((response) => {
@@ -44,7 +46,7 @@ const App = () => {
     setSearchInput(input);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const entry = {
       fields: {
@@ -59,7 +61,13 @@ const App = () => {
         },
       },
     };
-    createEntry(entry).then((data) => console.log(data));
+    createEntry(entry).then((data) => {
+      console.log(data);
+    });
+    setTimeout(() => setUploading(!uploading), 1000);
+    titleRef.current.value = "";
+    shortTextRef.current.value = "";
+    longTextRef.current.value = "";
   };
 
   const displayAllresults = (e) => {
