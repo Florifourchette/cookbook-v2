@@ -17,6 +17,8 @@ import ProtectedRoute from "./ProtectedRoute";
 
 
 
+
+
 const App = () => {
   const { getRecipes } = useContentful();
   const { getCategories } = useContentful();
@@ -24,13 +26,14 @@ const App = () => {
   const [searchInput, setSearchInput] = useState("");
   const [categories, setCategories] = useState([]);
   const [categoryID, setCategoryID] = useState(null);
-  const [checked, setchecked] = useState(false);
+  const [checked, setchecked] = useState(null);
 
   useEffect(() => {
-    getRecipes(categoryID).then((response) => {
+    getRecipes(categoryID, searchInput).then((response) => {
+      console.log(response);
       setRecipes(response);
     });
-  }, [categoryID]);
+  }, [categoryID ,searchInput,]);
 
   useEffect(() => {
     getCategories().then((response) => {
@@ -44,12 +47,9 @@ const App = () => {
 
   const displayAllresults = (e) => {
     e.preventDefault();
-    getRecipes().then((response) => {
-      setRecipes(response);
-      setCategoryID(null);
-      setchecked(false);
-    });
-    // window.location.reload();
+    setCategoryID(null)
+    setchecked(null)
+    setSearchInput('')
   };
 
   const filteredRecipes = recipes.filter((recipe) => {
@@ -101,11 +101,13 @@ const App = () => {
           } />
         <Route
           path="/recipe/:id"
+
           element={
           <ProtectedRoute>
             <Recipe filteredRecipes={filteredRecipes} />
           </ProtectedRoute>
         }
+
         />
       </Routes>
       <Footer />

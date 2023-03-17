@@ -6,6 +6,7 @@ import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
 
 export default ({
   filteredRecipes,
+  recipes,
   categories,
   categoryID,
   setCategoryID,
@@ -61,6 +62,7 @@ export default ({
           {filteredRecipes?.map((recipe) => (
             <RecipeCard key={recipe.recipeUrl} recipe={recipe} />
           ))}
+          
         </div>
       </div>
     </div>
