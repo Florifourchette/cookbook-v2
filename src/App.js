@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, Routes, Route } from "react-router-dom";
+import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 import useContentful from "./useContentful";
 import Recipe from "./Recipe";
 import Home from "./Home";
@@ -8,6 +8,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Contact from "./Contact";
 import About from "./About";
 import Footer from "./Footer";
+import Signup from "./Signup";
+import Login from "./Login";
+import { AuthProvider } from "./contexts/AuthContext";
+import ProtectedRoute from "./ProtectedRoute";
+
+
+
+
 
 
 
@@ -53,11 +61,16 @@ const App = () => {
 
   return (
     <div className="root">
+
       <NavigationBar callback={handleSearchInput} />
       <Routes>
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+
         <Route
-          path="/"
+          exact path="/"
           element={
+            <ProtectedRoute>
             <Home
               filteredRecipes={filteredRecipes}
               categories={categories}
@@ -69,13 +82,32 @@ const App = () => {
               setchecked={setchecked}
               checked={checked}
             />
+            </ProtectedRoute>
           }
         />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/About" element={<About />} />
+        <Route path="/contact" 
+        
+          element={
+            <ProtectedRoute>
+              <Contact />
+            </ProtectedRoute>
+          } 
+        />
+        <Route path="/About" 
+        element={
+            <ProtectedRoute>
+              <About  />
+            </ProtectedRoute>
+          } />
         <Route
           path="/recipe/:id"
-          element={<Recipe recipes={recipes} />}
+
+          element={
+          <ProtectedRoute>
+            <Recipe filteredRecipes={filteredRecipes} />
+          </ProtectedRoute>
+        }
+
         />
       </Routes>
       <Footer />
