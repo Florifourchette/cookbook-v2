@@ -12,7 +12,10 @@ function NavigationBar({callback} ) {
     const handleSearchInput = (e) => {
         callback(e.target.value);
         };
+    //hiding search
     const showSearchBar = location.pathname === "/";
+    //hiding nav
+    const hideNav = location.pathname === '/login' || location.pathname ==='/signup';
 
     //Log out
     const [error, setError] = useState('')
@@ -31,6 +34,7 @@ function NavigationBar({callback} ) {
 
     return (
         <>
+            {!hideNav && (
             <Navbar className="Navbar" expand="lg">
                 <Navbar.Brand> <img className="logo" src={logo} alt="Logo" /></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -60,7 +64,7 @@ function NavigationBar({callback} ) {
                             Contact
                         </NavLink>
                         <NavDropdown title='Account' id="collasible-nav-dropdown">
-                            {/* <NavDropdown.Item ><strong>User: </strong>{currentUser.email}</NavDropdown.Item> */}
+                            <NavDropdown.Item ><strong>User: </strong>{currentUser.email}</NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.1">Settings</NavDropdown.Item>
                             <NavDropdown.Divider />
                             <NavDropdown.Item onClick={handleLogout}>Log Out</NavDropdown.Item>
@@ -69,6 +73,7 @@ function NavigationBar({callback} ) {
                 
                 </Navbar.Collapse>
             </Navbar>
+            )}
         </>
     );
 }
