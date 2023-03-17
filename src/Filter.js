@@ -1,5 +1,4 @@
 import React from "react";
-import { useRef } from "react";
 
 const Filter = ({ checked, setchecked }) => {
   const handleChange = () => {
@@ -14,6 +13,7 @@ const Filter = ({ checked, setchecked }) => {
           type="checkbox"
           value={checked}
           onChange={handleChange}
+          checked={checked}
         />
         <p id="VeganParagraph">Vegan</p>
       </div>

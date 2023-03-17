@@ -135,7 +135,7 @@ h1 {
 .checkbox-wrapper-2 .ikxBAC:checked:hover {
   background-color: #535db3;
 }
-#resetAll {
+#resetAll, .submit-btn{
   background-color: #a5cae3;
   border-radius: 8px;
   border-style: none;

@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { NavLink, Routes, Route } from "react-router-dom";
+import React, { useEffect, useState, useRef } from "react";
+import { Routes, Route } from "react-router-dom";
 import useContentful from "./useContentful";
+import manageContentful from "./manageContentful";
 import Recipe from "./Recipe";
 import Home from "./Home";
 import NavigationBar from "./Navbar";
@@ -12,11 +13,15 @@ import Footer from "./Footer";
 const App = () => {
   const { getRecipes } = useContentful();
   const { getCategories } = useContentful();
+  const { createEntry } = manageContentful();
   const [recipes, setRecipes] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [categories, setCategories] = useState([]);
   const [categoryID, setCategoryID] = useState(null);
   const [checked, setchecked] = useState(false);
+  const titleRef = useRef("");
+  const shortTextRef = useRef("");
+  const longTextRef = useRef("");
 
   useEffect(() => {
     getRecipes(categoryID).then((response) => {
@@ -36,18 +41,34 @@ const App = () => {
     setSearchInput(input);
   };
 
-  const displayAllresults = (e) => {
-    // e.preventDefault();
-    // getRecipes().then((response) => {
-    //   console.log(response);
-    //   setRecipes(response);
-    //   setCategoryID(null);
-    //   setchecked(false);
-    // });
-    window.location.reload();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const entry = {
+      fields: {
+        recipeTitle: {
+          "en-US": titleRef.current.value,
+        },
+        shortDescription: {
+          "en-US": shortTextRef.current.value,
+        },
+        longDescription: {
+          "en-US": longTextRef.current.value,
+        },
+      },
+    };
+    createEntry(entry).then((data) => console.log(data));
   };
 
-  console.log(checked);
+  const displayAllresults = (e) => {
+    e.preventDefault();
+    getRecipes().then((response) => {
+      console.log(response);
+      setRecipes(response);
+      setCategoryID(null);
+      setchecked(false);
+    });
+    // window.location.reload();
+  };
 
   const filteredRecipes = recipes.filter((recipe) => {
     return (
@@ -73,6 +94,10 @@ const App = () => {
               setRecipes={setRecipes}
               setchecked={setchecked}
               checked={checked}
+              titleRef={titleRef}
+              shortTextRef={shortTextRef}
+              longTextRef={longTextRef}
+              handleSubmit={handleSubmit}
             />
           }
         />
