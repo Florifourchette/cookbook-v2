@@ -9,6 +9,7 @@ import Contact from "./Contact";
 import About from "./About";
 import Footer from "./Footer";
 import Signup from "./Signup";
+import Login from "./Login";
 import { Container } from 'react-bootstrap'
 import { AuthProvider } from "./contexts/AuthContext";
 
@@ -64,7 +65,8 @@ const App = () => {
       <NavigationBar callback={handleSearchInput} />
       <Routes>
         <Route path="/signup" element={<Signup />} />
-        
+        <Route path="/login" element={<Login />} />
+
         <Route
           path="/"
           element={

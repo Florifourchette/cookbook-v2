@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect } from 'react'
-import { children } from 'svelte/internal'
 import { auth } from '../firebase'
 
 const AuthContext = React.createContext()
@@ -15,6 +14,10 @@ export  function AuthProvider({children}) {
     function signUp(email, password) {
         return auth.createUserWithEmailAndPassword(email, password)
     }
+    
+    function login(email, password) {
+        return auth.signInWithEmailAndPassword(email,password)
+    }
 
     useEffect(() => {
         
@@ -28,6 +31,7 @@ export  function AuthProvider({children}) {
     
     const value = {
         currentUser,
+        login,
         signUp
     }
     return (
