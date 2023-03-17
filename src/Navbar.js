@@ -65,7 +65,7 @@ function NavigationBar({ callback }) {
               <NavLink className="Nav-link" to="/contact">
                 Contact
               </NavLink>
-              <NavDropdown title="Account" id="collasible-nav-dropdown">
+              <NavDropdown align="end" title="Account" id="collasible-nav-dropdown">
                 <NavDropdown.Item ><strong>User: </strong>{currentUser && currentUser.email}</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.1">Settings</NavDropdown.Item>
                 <NavDropdown.Divider />
