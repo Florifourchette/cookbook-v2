@@ -1,5 +1,4 @@
 import React from "react";
-import { useRef } from "react";
 
 const Filter = ({ checked, setchecked }) => {
   console.log(checked);
