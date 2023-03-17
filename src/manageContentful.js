@@ -5,7 +5,7 @@ const manageContentful = () => {
     accessToken: process.env.REACT_APP_CONTENTFUL_MANAGEMENT,
   });
 
-  const createEntry = async (entry) => {
+  const createEntry = async (entry, setUploading) => {
     try {
       client
         .getSpace(process.env.REACT_APP_CONTENTFULT_SPACE)
@@ -18,7 +18,10 @@ const manageContentful = () => {
 
           return environment.createEntry("recipeTitle", entry);
         })
-        .then((entry) => console.log(entry))
+        .then((entry) => {
+          console.log(entry);
+          setUploading((prev) => !prev);
+        })
         .catch(console.error);
     } catch (error) {
       console.error(error);
