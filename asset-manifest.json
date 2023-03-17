@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/cookbook-v2/static/css/main.89b05969.css",
-    "main.js": "/cookbook-v2/static/js/main.ad9b8a03.js",
+    "main.js": "/cookbook-v2/static/js/main.96f0abc1.js",
     "static/media/fa-solid-900.ttf": "/cookbook-v2/static/media/fa-solid-900.2877d54f94f30c5d563c.ttf",
     "static/media/fa-brands-400.ttf": "/cookbook-v2/static/media/fa-brands-400.13e40630e5866f777de8.ttf",
     "static/media/fa-solid-900.woff2": "/cookbook-v2/static/media/fa-solid-900.bdb9e23299f9d1320a8b.woff2",
@@ -15,10 +15,10 @@
     "static/media/fa-v4compatibility.woff2": "/cookbook-v2/static/media/fa-v4compatibility.497d535001197a9c5b38.woff2",
     "index.html": "/cookbook-v2/index.html",
     "main.89b05969.css.map": "/cookbook-v2/static/css/main.89b05969.css.map",
-    "main.ad9b8a03.js.map": "/cookbook-v2/static/js/main.ad9b8a03.js.map"
+    "main.96f0abc1.js.map": "/cookbook-v2/static/js/main.96f0abc1.js.map"
   },
   "entrypoints": [
     "static/css/main.89b05969.css",
-    "static/js/main.ad9b8a03.js"
+    "static/js/main.96f0abc1.js"
   ]
 }
