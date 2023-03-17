@@ -61,10 +61,9 @@ const App = () => {
         },
       },
     };
-    createEntry(entry).then((data) => {
+    createEntry(entry, setUploading).then((data) => {
       console.log(data);
     });
-    setTimeout(() => setUploading(!uploading), 1000);
     titleRef.current.value = "";
     shortTextRef.current.value = "";
     longTextRef.current.value = "";
