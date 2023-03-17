@@ -14,10 +14,6 @@ export default ({ filteredRecipes }) => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  function handleClick() {
-    navigate("/");
-  }
-
   const myRecipe = filteredRecipes.find((aRecipe) => {
     return aRecipe.recipeUrl === id;
   });
@@ -33,9 +29,19 @@ export default ({ filteredRecipes }) => {
   return (
     <div>
       <CssBaseline />
-      <button onClick={handleClick} id="back">
-        Back to Homepage
-      </button>
+      <nav
+        aria-label="breadcrumb"
+        style={{ marginTop: "1rem", marginLeft: "0.5rem" }}
+      >
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="/">Home</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">
+            {id}
+          </li>
+        </ol>
+      </nav>
       <main>
         <div>
           <Container
