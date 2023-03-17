@@ -177,3 +177,13 @@ h1 {
   margin-top: -5%;
   margin-left: 10%;
 }
+#container{
+  min-height: '100vh';
+}
+.sign-up{
+  max-width: 40em;
+  text-align: center;
+  align-self: center;
+  margin-inline: 30%;
+  margin-top: 3em;
+}

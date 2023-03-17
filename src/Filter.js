@@ -1,6 +1,7 @@
 import React from "react";
 
 const Filter = ({ checked, setchecked }) => {
+  console.log(checked);
   const handleChange = () => {
     setchecked(!checked);
   };
