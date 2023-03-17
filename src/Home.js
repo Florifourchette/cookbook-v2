@@ -1,17 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 import Filter from "./Filter";
 import RecipeCard from "./RecipeCard";
 import TextField from "@mui/material/TextField";
 import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
+import Form from "react-bootstrap/Form";
 
 export default ({
   filteredRecipes,
+  recipes,
   categories,
   categoryID,
   setCategoryID,
   displayAllresults,
   checked,
   setchecked,
+  titleRef,
+  handleSubmit,
+  shortTextRef,
+  longTextRef,
 }) => {
   const filterOptions = createFilterOptions({
     matchFrom: "start",
@@ -61,6 +67,33 @@ export default ({
           {filteredRecipes?.map((recipe) => (
             <RecipeCard key={recipe.recipeUrl} recipe={recipe} />
           ))}
+          
+        </div>
+        <div className="row d-flex justify-content-center">
+          <div className="col-sm-12 col-md-7 col-lg-6 col-xl-6 d-flex align-items-center flex-column">
+            <Form.Label
+              className="text-left w-100"
+              style={{ marginTop: "2em" }}
+            >
+              Recipe Title
+            </Form.Label>
+            <Form.Control type="text" ref={titleRef} />
+            <Form.Label className="text-left w-100">
+              Short Description
+            </Form.Label>
+            <Form.Control type="text" ref={shortTextRef} />
+            <Form.Label className="text-left w-100">
+              Long Description
+            </Form.Label>
+            <Form.Control
+              type="text"
+              ref={longTextRef}
+              style={{ height: "5em", marginBottom: "1em" }}
+            />
+            <button className="submit-btn text-center" onClick={handleSubmit}>
+              Upload Recipe
+            </button>
+          </div>
         </div>
       </div>
     </div>

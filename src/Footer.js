@@ -16,22 +16,22 @@ export default function Footer() {
             <span>Get connected with us on social networks:</span>
         </div>
         <div>
-        <a href="" class="me-4 text-reset">
+        <a href="" className="me-4 text-reset">
         <i class="fab fa-facebook-f"></i>
         </a>
-        <a href="" class="me-4 text-reset">
+        <a href="" className="me-4 text-reset">
         <i class="fab fa-twitter"></i>
         </a>
-        <a href="" class="me-4 text-reset">
+        <a href="" className="me-4 text-reset">
         <i class="fab fa-google"></i>
         </a>
-        <a href="" class="me-4 text-reset">
+        <a href="" className="me-4 text-reset">
         <i class="fab fa-instagram"></i>
         </a>
-        <a href="" class="me-4 text-reset">
+        <a href="" className="me-4 text-reset">
         <i class="fab fa-linkedin"></i>
         </a>
-        <a href="" class="me-4 text-reset">
+        <a href="" className="me-4 text-reset">
         <i class="fab fa-github"></i>
         </a>
     </div>

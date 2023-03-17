@@ -135,7 +135,7 @@ h1 {
 .checkbox-wrapper-2 .ikxBAC:checked:hover {
   background-color: #535db3;
 }
-#resetAll {
+#resetAll, .submit-btn{
   background-color: #a5cae3;
   border-radius: 8px;
   border-style: none;
@@ -176,4 +176,14 @@ h1 {
 #VeganParagraph {
   margin-top: -5%;
   margin-left: 10%;
+}
+#container{
+  min-height: '100vh';
+}
+.sign-up{
+  max-width: 40em;
+  text-align: center;
+  align-self: center;
+  margin-inline: 30%;
+  margin-top: 3em;
 }
