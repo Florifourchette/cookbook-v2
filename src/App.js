@@ -10,8 +10,8 @@ import About from "./About";
 import Footer from "./Footer";
 import Signup from "./Signup";
 import Login from "./Login";
-import { Container } from 'react-bootstrap'
 import { AuthProvider } from "./contexts/AuthContext";
+import ProtectedRoute from "./ProtectedRoute";
 
 
 
@@ -68,8 +68,9 @@ const App = () => {
         <Route path="/login" element={<Login />} />
 
         <Route
-          path="/"
+          exact path="/"
           element={
+            <ProtectedRoute>
             <Home
               filteredRecipes={filteredRecipes}
               categories={categories}
@@ -81,13 +82,30 @@ const App = () => {
               setchecked={setchecked}
               checked={checked}
             />
+            </ProtectedRoute>
           }
         />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/About" element={<About />} />
+        <Route path="/contact" 
+        
+          element={
+            <ProtectedRoute>
+              <Contact />
+            </ProtectedRoute>
+          } 
+        />
+        <Route path="/About" 
+        element={
+            <ProtectedRoute>
+              <About  />
+            </ProtectedRoute>
+          } />
         <Route
           path="/recipe/:id"
-          element={<Recipe filteredRecipes={filteredRecipes} />}
+          element={
+          <ProtectedRoute>
+            <Recipe filteredRecipes={filteredRecipes} />
+          </ProtectedRoute>
+        }
         />
       </Routes>
       <Footer />

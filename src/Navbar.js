@@ -60,7 +60,7 @@ function NavigationBar({callback} ) {
                             Contact
                         </NavLink>
                         <NavDropdown title='Account' id="collasible-nav-dropdown">
-                            <NavDropdown.Item ><strong>User: </strong>{currentUser.email}</NavDropdown.Item>
+                            {/* <NavDropdown.Item ><strong>User: </strong>{currentUser.email}</NavDropdown.Item> */}
                             <NavDropdown.Item href="#action/3.1">Settings</NavDropdown.Item>
                             <NavDropdown.Divider />
                             <NavDropdown.Item onClick={handleLogout}>Log Out</NavDropdown.Item>
